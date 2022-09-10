@@ -17,7 +17,7 @@ export default function KLabzFooter() {
           cursor: "pointer",
         }}
         role="button"
-        onClick={() => window.open("https://https://kroniclabz.com/", "_blank")}
+        onClick={() => window.open("https://kroniclabz.com/", "_blank")}
       />
 
       <div
@@ -33,7 +33,7 @@ export default function KLabzFooter() {
           height={60}
           role="button"
           style={{ cursor: "pointer" }}
-          onClick={() => window.open("https://kroniclazb.com/", "_blank")}
+          onClick={() => window.open("https://kroniclabz.com/", "_blank")}
         />
       </div>
     </>
