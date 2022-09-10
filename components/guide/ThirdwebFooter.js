@@ -17,7 +17,7 @@ export default function ThirdwebFooter() {
           cursor: "pointer",
         }}
         role="button"
-        onClick={() => window.open("https://https://thirdweb.com/", "_blank")}
+        onClick={() => window.open("https://thirdweb.com/", "_blank")}
 
       />
     </>
