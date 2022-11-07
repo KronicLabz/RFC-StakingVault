@@ -2,8 +2,6 @@ import {
   ThirdwebNftMedia,
   useAddress,
   useMetamask,
-  useNFTDrop,
-  useToken,
   useTokenBalance,
   useOwnedNFTs,
   useContract,
@@ -13,9 +11,9 @@ import type { NextPage } from "next";
 import { useEffect, useState } from "react";
 import styles from "../styles/Home.module.css";
 
-const nftDropContractAddress = "0x49D2B5272D686C8Bdc03b84E4d7496506d49BF4E";
-const tokenContractAddress = "0x90E523BC420eA64D3996C1f1EE1fED5bB8128CD6";
-const stakingContractAddress = "0xb0AF9A5FC45Fefe4C5fcF045846897F3dA037840";
+const nftDropContractAddress = "0x322067594DBCE69A9a9711BC393440aA5e3Aaca1";
+const tokenContractAddress = "0xb1cF059e6847e4270920a02e969CA2E016AeA22B";
+const stakingContractAddress = "0xB712975e13427ac804177E7CebF08781bbF9B89c";
 
 const Stake: NextPage = () => {
   // Wallet Connection Hooks
@@ -23,8 +21,15 @@ const Stake: NextPage = () => {
   const connectWithMetamask = useMetamask();
 
   // Contract Hooks
-  const nftDropContract = useNFTDrop(nftDropContractAddress);
-  const tokenContract = useToken(tokenContractAddress);
+  const { contract: nftDropContract } = useContract(
+    nftDropContractAddress,
+    "nft-drop"
+  );
+
+  const { contract: tokenContract } = useContract(
+    tokenContractAddress,
+    "token"
+  );
 
   const { contract, isLoading } = useContract(stakingContractAddress);
 
@@ -80,7 +85,7 @@ const Stake: NextPage = () => {
   ///////////////////////////////////////////////////////////////////////////
   // Write Functions
   ///////////////////////////////////////////////////////////////////////////
-  async function stakeNft(id: BigNumber) {
+  async function stakeNft(id: string) {
     if (!address) return;
 
     const isApproved = await nftDropContract?.isApproved(
